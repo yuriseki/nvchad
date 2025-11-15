@@ -22,7 +22,11 @@ require("lazy").setup({
     import = "nvchad.plugins",
   },
 
+
+  -- {import = "plugins-drupal"},
   { import = "plugins" },
+  { import = "custom.plugins" },
+
 }, lazy_config)
 
 -- load theme
@@ -31,6 +35,10 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
 require "autocmds"
+require "custom.keymap"
+require "custom.options"
+require "custom.lsp"
+
 
 vim.schedule(function()
   require "mappings"
