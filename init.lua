@@ -37,7 +37,7 @@ require "options"
 require "autocmds"
 require "custom.keymap"
 require "custom.options"
-require "custom.lsp"
+-- require "custom.lsp"
 
 
 vim.schedule(function()
