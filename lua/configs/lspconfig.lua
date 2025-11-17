@@ -1,12 +1,17 @@
 require("nvchad.configs.lspconfig").defaults()
 
+    
+
 local servers = {
   "html",
   "cssls",
   "lua",
-  "drupal_ls",
-  "tsserver",
-  "tailwindcss-language-server"
+  -- "drupal_ls",
+  "ts_ls",
+  "tailwindcss",
+  "jsonls",
+  "pyright",
+  -- "ast_grep",
 }
 vim.lsp.enable(servers)
 

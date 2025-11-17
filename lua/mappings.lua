@@ -42,3 +42,26 @@ map('i', '<C-s>', '<cmd> w <cr><esc>') -- Save with crtl+s and go to normal mode
         prompt_title = 'Live Grep in Open Files',
       }
     end, { desc = '[S]earch [/] in Open Files' })
+
+     -- Set up common keymaps
+        local opts = {buffer = true}
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+        vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+        vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
+        vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, opts)
+
+-- Debug donfiguration
+local dap = require("dap")      
+-- Define a highlight group for the sign text
+vim.cmd("highlight DapBreakpointText guifg=#E82424")
+vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
+vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
+vim.fn.sign_define('DapBreakpoint', {text='', texthl='DapBreakpointText', linehl='', numhl=''})
